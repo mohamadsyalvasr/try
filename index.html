@@ -3,43 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamad Syalva SR</title>
+    <title>Try the Experience</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .menu {
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            left: 10px; /* Adjust as needed */
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 10; /* Ensure the menu is above the embed */
-        }
-        embed {
-            display: block;
-            width: 100%;
-            height: 100%;
-            border: none;
+        body {
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- <div class="menu">
-        </div> -->
-        <embed src="https://lynk.id/mohamadsyalvasr/">
+<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <!-- Main Content Container -->
+    <div class="max-w-3xl w-full p-8 md:p-12 bg-slate-800 rounded-2xl shadow-lg border border-slate-700">
+
+        <!-- Header Section -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-4 animate-pulse">
+                Welcome to the Try Experience
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 font-medium">
+                No sign-ups, no commitments. Just a live, interactive demo.
+            </p>
+        </div>
+
+        <!-- Interactive Demo Section -->
+        <div class="bg-slate-700 p-6 md:p-8 rounded-xl shadow-inner border border-slate-600">
+            <h2 class="text-2xl font-semibold mb-4 text-slate-200">What do you want to try?</h2>
+
+            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
+                <!-- Interactive Button -->
+                <button id="demoButton" class="w-full md:w-auto px-6 py-3 bg-indigo-500 hover:bg-indigo-600 transition-all duration-300 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-700">
+                    <span class="text-lg font-bold">Click Me!</span>
+                </button>
+
+                <!-- Response Display -->
+                <div id="demoOutput" class="w-full bg-slate-800 border border-slate-600 rounded-lg p-4 text-slate-300 transition-all duration-500">
+                    <p>
+                        This is a live output area. Click the button to see what happens!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Text/Info -->
+        <div class="mt-8 text-center text-slate-500 text-sm">
+            <p>Ready to build something incredible? This is just a small taste.</p>
+        </div>
+
     </div>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        const demoButton = document.getElementById('demoButton');
+        const demoOutput = document.getElementById('demoOutput');
+        let clickCount = 0;
+
+        demoButton.addEventListener('click', () => {
+            clickCount++;
+            const messages = [
+                "That's right, it's that easy.",
+                "See? It just works!",
+                "You're a natural. Keep going!",
+                "Ready for the real deal?"
+            ];
+
+            const message = messages[(clickCount - 1) % messages.length];
+            
+            demoOutput.innerHTML = `
+                <p class="font-bold text-green-400">Action successful! 🎉</p>
+                <p class="mt-2 text-slate-300">"${message}"</p>
+            `;
+            
+            // Add a subtle bounce animation
+            demoButton.classList.add('animate-bounce-once');
+            setTimeout(() => {
+                demoButton.classList.remove('animate-bounce-once');
+            }, 500);
+        });
+    </script>
 </body>
 </html>
